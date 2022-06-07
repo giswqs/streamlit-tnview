@@ -10,7 +10,7 @@ import streamlit as st
 import leafmap.colormaps as cm
 from leafmap.common import hex_to_rgb
 
-
+st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
 TNView webiste: <https://tnview.utk.edu>
