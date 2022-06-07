@@ -13,5 +13,4 @@ Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
 st.sidebar.info(markdown)
-
 st.sidebar.image("https://i.imgur.com/qXqRBda.png")
