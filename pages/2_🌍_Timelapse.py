@@ -12,6 +12,16 @@ from shapely.geometry import Polygon
 
 st.set_page_config(layout="wide")
 
+markdown = """
+Web App URL: <https://tnview.gishub.org>
+TNView webiste: <https://tnview.utk.edu>
+Contact: [Dr. Qiusheng Wu](https://wetlands.io)
+"""
+
+st.sidebar.info(markdown)
+
+st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 goes_rois = {
     "Creek Fire, CA (2020-09-05)": {
         "region": Polygon(
@@ -209,7 +219,7 @@ def app():
 
     today = date.today()
 
-    st.title("Create Timelapse")
+    st.title("Create Satellite Timelapse")
 
     st.markdown(
         """
@@ -1490,3 +1500,4 @@ def app():
                             )
 
 app()
+
