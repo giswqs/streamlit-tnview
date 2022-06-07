@@ -6,5 +6,6 @@ keplergl
 leafmap
 localtileserver
 nbserverproxy
+owslib
 streamlit
 
