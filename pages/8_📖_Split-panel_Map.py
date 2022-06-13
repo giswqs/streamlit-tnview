@@ -7,12 +7,13 @@ import streamlit as st
 st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
 st.sidebar.info(markdown)
 st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 @st.cache
 def uploaded_file_to_gdf(data):
@@ -584,5 +585,6 @@ def app():
                 - [NHD-HUC10](https://developers.google.com/earth-engine/datasets/catalog/USGS_WBD_2017_HUC10)
             """
             st.markdown(desc)
+
 
 app()

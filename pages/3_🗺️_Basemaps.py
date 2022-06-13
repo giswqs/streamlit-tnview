@@ -4,12 +4,13 @@ import leafmap.foliumap as leafmap
 st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
 st.sidebar.info(markdown)
 st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 def app():
     st.title("Searching Basemaps")
@@ -48,5 +49,6 @@ def app():
                     m.add_xyz_service(tile)
 
             m.to_streamlit(width, height)
+
 
 app()

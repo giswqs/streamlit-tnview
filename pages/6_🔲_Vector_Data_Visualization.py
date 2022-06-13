@@ -5,12 +5,13 @@ import streamlit as st
 st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
 st.sidebar.info(markdown)
 st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 def save_uploaded_file(file_content, file_name):
     """
@@ -104,5 +105,6 @@ def app():
             with row1_col1:
                 m = leafmap.Map()
                 st.pydeck_chart(m)
+
 
 app()

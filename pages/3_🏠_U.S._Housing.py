@@ -13,7 +13,7 @@ from leafmap.common import hex_to_rgb
 st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
@@ -360,7 +360,14 @@ def app():
         gdf.loc[ind, "B"] = colors[index][2]
 
     initial_view_state = pdk.ViewState(
-        latitude=40, longitude=-100, zoom=3, max_zoom=16, pitch=0, bearing=0, height=700, width=None
+        latitude=40,
+        longitude=-100,
+        zoom=3,
+        max_zoom=16,
+        pitch=0,
+        bearing=0,
+        height=700,
+        width=None,
     )
 
     min_value = gdf[selected_col].min()
@@ -464,5 +471,6 @@ def app():
             st.dataframe(gdf[["NAME", "CBSAFP"] + show_cols])
         elif scale == "Zip":
             st.dataframe(gdf[["GEOID10"] + show_cols])
+
 
 app()

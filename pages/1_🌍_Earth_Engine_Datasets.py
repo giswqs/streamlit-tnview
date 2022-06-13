@@ -5,12 +5,13 @@ import geemap.foliumap as geemap
 st.set_page_config(layout="wide")
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
 st.sidebar.info(markdown)
 st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 def nlcd():
 

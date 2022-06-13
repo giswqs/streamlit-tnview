@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 
 markdown = """
 Web App URL: <https://tnview.gishub.org>
-TNView webiste: <https://tnview.utk.edu>
+TNView website: <https://tnview.utk.edu>
 Contact: [Dr. Qiusheng Wu](https://wetlands.io)
 """
 
@@ -551,14 +551,10 @@ def app():
                 # st.info(
                 #     "Steps to create a timelapse: Draw a rectangle on the map -> Export it as a GeoJSON -> Upload it back to the app -> Click Submit button"
                 # )
-                if (
-                    collection
-                    in [
-                        "Geostationary Operational Environmental Satellites (GOES)",
-                        "USDA National Agriculture Imagery Program (NAIP)",
-                    ]
-                    and (not keyword)
-                ):
+                if collection in [
+                    "Geostationary Operational Environmental Satellites (GOES)",
+                    "USDA National Agriculture Imagery Program (NAIP)",
+                ] and (not keyword):
                     m.set_center(-100, 40, 3)
                 # else:
                 #     m.set_center(4.20, 18.63, zoom=2)
@@ -1499,5 +1495,5 @@ def app():
                                 "Something went wrong. You either requested too much data or the ROI is outside the U.S."
                             )
 
-app()
 
+app()
