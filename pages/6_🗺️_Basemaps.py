@@ -2,18 +2,26 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
-markdown = """
-Web App URL: <https://tnview.gishub.org>
-TNView website: <https://tnview.utk.edu>
-Contact: [Dr. Qiusheng Wu](https://wetlands.io)
-"""
 
-st.sidebar.info(markdown)
-st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+st.sidebar.title("About")
+st.sidebar.info(
+    """
+    Web App URL: <https://geospatial.streamlitapp.com>
+    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
+    """
+)
+
+st.sidebar.title("Contact")
+st.sidebar.info(
+    """
+    Qiusheng Wu: <https://wetlands.io>
+    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
+    """
+)
 
 
 def app():
-    st.title("Searching Basemaps")
+    st.title("Search Basemaps")
     st.markdown(
         """
     This app is a demonstration of searching and loading basemaps from [xyzservices](https://github.com/geopandas/xyzservices) and [Quick Map Services (QMS)](https://github.com/nextgis/quickmapservices). Selecting from 1000+ basemaps with a few clicks.  

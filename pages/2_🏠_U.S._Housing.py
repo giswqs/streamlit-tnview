@@ -11,14 +11,22 @@ import leafmap.colormaps as cm
 from leafmap.common import hex_to_rgb
 
 st.set_page_config(layout="wide")
-markdown = """
-Web App URL: <https://tnview.gishub.org>
-TNView website: <https://tnview.utk.edu>
-Contact: [Dr. Qiusheng Wu](https://wetlands.io)
-"""
 
-st.sidebar.info(markdown)
-st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+st.sidebar.title("About")
+st.sidebar.info(
+    """
+    Web App URL: <https://geospatial.streamlitapp.com>
+    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
+    """
+)
+
+st.sidebar.title("Contact")
+st.sidebar.info(
+    """
+    Qiusheng Wu: <https://wetlands.io>
+    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
+    """
+)
 
 STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / "static"
 # We create a downloads directory within the streamlit static asset directory
@@ -366,7 +374,7 @@ def app():
         max_zoom=16,
         pitch=0,
         bearing=0,
-        height=700,
+        height=900,
         width=None,
     )
 

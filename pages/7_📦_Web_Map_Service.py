@@ -3,14 +3,22 @@ import streamlit as st
 import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
-markdown = """
-Web App URL: <https://tnview.gishub.org>
-TNView website: <https://tnview.utk.edu>
-Contact: [Dr. Qiusheng Wu](https://wetlands.io)
-"""
 
-st.sidebar.info(markdown)
-st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+st.sidebar.title("About")
+st.sidebar.info(
+    """
+    Web App URL: <https://geospatial.streamlitapp.com>
+    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
+    """
+)
+
+st.sidebar.title("Contact")
+st.sidebar.info(
+    """
+    Qiusheng Wu: <https://wetlands.io>
+    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
+    """
+)
 
 
 @st.cache
@@ -20,7 +28,7 @@ def get_layers(url):
 
 
 def app():
-    st.title("Add Web Map Service (WMS)")
+    st.title("Web Map Service (WMS)")
     st.markdown(
         """
     This app is a demonstration of loading Web Map Service (WMS) layers. Simply enter the URL of the WMS service 

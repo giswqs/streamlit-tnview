@@ -1,6 +1,7 @@
 from sys import modules
 import ee
 import os
+import warnings
 import datetime
 import geopandas as gpd
 import folium
@@ -11,16 +12,29 @@ from datetime import date
 from shapely.geometry import Polygon
 
 st.set_page_config(layout="wide")
+warnings.filterwarnings("ignore")
 
-markdown = """
-Web App URL: <https://tnview.gishub.org>
-TNView website: <https://tnview.utk.edu>
-Contact: [Dr. Qiusheng Wu](https://wetlands.io)
-"""
 
-st.sidebar.info(markdown)
+@st.cache(persist=True)
+def ee_authenticate(token_name="EARTHENGINE_TOKEN"):
+    geemap.ee_initialize(token_name=token_name)
 
-st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
+st.sidebar.title("About")
+st.sidebar.info(
+    """
+    Web App URL: <https://geospatial.streamlitapp.com>
+    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
+    """
+)
+
+st.sidebar.title("Contact")
+st.sidebar.info(
+    """
+    Qiusheng Wu: <https://wetlands.io>
+    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
+    """
+)
 
 goes_rois = {
     "Creek Fire, CA (2020-09-05)": {
@@ -239,6 +253,7 @@ def app():
     st.session_state["vis_params"] = None
 
     with row1_col1:
+        ee_authenticate(token_name="EARTHENGINE_TOKEN")
         m = geemap.Map(
             basemap="HYBRID",
             plugin_Draw=True,
@@ -605,13 +620,23 @@ def app():
                 gdf = gpd.GeoDataFrame(
                     index=[0], crs=crs, geometry=[ocean_rois[sample_roi]]
                 )
-            st.session_state["roi"] = geemap.geopandas_to_ee(gdf, geodesic=False)
+            try:
+                st.session_state["roi"] = geemap.gdf_to_ee(gdf, geodesic=False)
+            except Exception as e:
+                st.error(e)
+                st.error("Please draw another ROI and try again.")
+                return
             m.add_gdf(gdf, "ROI")
 
         elif data:
             gdf = uploaded_file_to_gdf(data)
-            st.session_state["roi"] = geemap.geopandas_to_ee(gdf, geodesic=False)
-            m.add_gdf(gdf, "ROI")
+            try:
+                st.session_state["roi"] = geemap.gdf_to_ee(gdf, geodesic=False)
+                m.add_gdf(gdf, "ROI")
+            except Exception as e:
+                st.error(e)
+                st.error("Please draw another ROI and try again.")
+                return
 
         m.to_streamlit(height=600)
 
@@ -731,7 +756,8 @@ def app():
                                     bands=bands,
                                     apply_fmask=apply_fmask,
                                     frames_per_second=speed,
-                                    dimensions=dimensions,
+                                    # dimensions=dimensions,
+                                    dimensions=768,
                                     overlay_data=overlay_data,
                                     overlay_color=overlay_color,
                                     overlay_width=overlay_width,
@@ -764,7 +790,8 @@ def app():
                                     bands=bands,
                                     apply_fmask=apply_fmask,
                                     frames_per_second=speed,
-                                    dimensions=dimensions,
+                                    dimensions=768,
+                                    # dimensions=dimensions,
                                     overlay_data=overlay_data,
                                     overlay_color=overlay_color,
                                     overlay_width=overlay_width,
@@ -1033,12 +1060,12 @@ def app():
                         empty_text.text("Computing... Please wait...")
 
                         geemap.modis_ndvi_timelapse(
+                            roi,
                             out_gif,
                             satellite,
                             band,
                             start_date,
                             end_date,
-                            roi,
                             768,
                             speed,
                             overlay_data=overlay_data,
@@ -1496,4 +1523,7 @@ def app():
                             )
 
 
-app()
+try:
+    app()
+except Exception as e:
+    pass
