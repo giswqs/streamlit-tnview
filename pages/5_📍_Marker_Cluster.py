@@ -3,21 +3,15 @@ import leafmap.foliumap as leafmap
 
 st.set_page_config(layout="wide")
 
-st.sidebar.title("About")
-st.sidebar.info(
-    """
-    Web App URL: <https://geospatial.streamlitapp.com>
-    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
-    """
-)
+markdown = """
+Web App URL: <https://tnview.gishub.org>
+TNView website: <https://tnview.utk.edu>
+Contact: [Dr. Qiusheng Wu](https://wetlands.io)
+"""
 
-st.sidebar.title("Contact")
-st.sidebar.info(
-    """
-    Qiusheng Wu: <https://wetlands.io>
-    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
-    """
-)
+st.sidebar.info(markdown)
+st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 st.title("Marker Cluster")
 

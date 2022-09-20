@@ -20,21 +20,15 @@ def ee_authenticate(token_name="EARTHENGINE_TOKEN"):
     geemap.ee_initialize(token_name=token_name)
 
 
-st.sidebar.title("About")
-st.sidebar.info(
-    """
-    Web App URL: <https://geospatial.streamlitapp.com>
-    GitHub repository: <https://github.com/giswqs/streamlit-geospatial>
-    """
-)
+markdown = """
+Web App URL: <https://tnview.gishub.org>
+TNView website: <https://tnview.utk.edu>
+Contact: [Dr. Qiusheng Wu](https://wetlands.io)
+"""
 
-st.sidebar.title("Contact")
-st.sidebar.info(
-    """
-    Qiusheng Wu: <https://wetlands.io>
-    [GitHub](https://github.com/giswqs) | [Twitter](https://twitter.com/giswqs) | [YouTube](https://www.youtube.com/c/QiushengWu) | [LinkedIn](https://www.linkedin.com/in/qiushengwu)
-    """
-)
+st.sidebar.info(markdown)
+st.sidebar.image("https://i.imgur.com/qXqRBda.png")
+
 
 goes_rois = {
     "Creek Fire, CA (2020-09-05)": {
