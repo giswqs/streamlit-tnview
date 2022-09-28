@@ -925,12 +925,12 @@ def app():
                         empty_text.text("Computing... Please wait...")
 
                         geemap.goes_timelapse(
+                            roi,
                             out_gif,
                             start_date=start,
                             end_date=end,
                             data=satellite,
                             scan=scan_type.replace(" ", "_").lower(),
-                            region=roi,
                             dimensions=768,
                             framesPerSecond=speed,
                             date_format="YYYY-MM-dd HH:mm",
