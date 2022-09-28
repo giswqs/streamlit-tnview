@@ -5,6 +5,6 @@ keplergl
 localtileserver
 nbserverproxy
 owslib
-streamlit
+streamlit==1.12.2
 git+https://github.com/giswqs/leafmap
 git+https://github.com/giswqs/geemap
