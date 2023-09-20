@@ -1,8 +1,8 @@
-from sys import modules
 import ee
 import os
 import warnings
 import datetime
+import fiona
 import geopandas as gpd
 import folium
 import streamlit as st
@@ -15,7 +15,7 @@ st.set_page_config(layout="wide")
 warnings.filterwarnings("ignore")
 
 
-@st.cache(persist=True)
+@st.cache(allow_output_mutation=True)
 def ee_authenticate(token_name="EARTHENGINE_TOKEN"):
     geemap.ee_initialize(token_name=token_name)
 
@@ -201,7 +201,7 @@ ocean_rois = {
 }
 
 
-@st.cache
+@st.cache(allow_output_mutation=True)
 def uploaded_file_to_gdf(data):
     import tempfile
     import os
@@ -215,7 +215,7 @@ def uploaded_file_to_gdf(data):
         file.write(data.getbuffer())
 
     if file_path.lower().endswith(".kml"):
-        gpd.io.file.fiona.drvsupport.supported_drivers["KML"] = "rw"
+        fiona.drvsupport.supported_drivers["KML"] = "rw"
         gdf = gpd.read_file(file_path, driver="KML")
     else:
         gdf = gpd.read_file(file_path)
